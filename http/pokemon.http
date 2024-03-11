@@ -1,0 +1,37 @@
+GET http://localhost:8080/api/pokemon/list
+Content-Type: application/json
+
+###
+
+GET http://localhost:8080/api/pokemon/list/PSYCHIC
+Content-Type: application/json
+
+###
+
+GET http://localhost:8080/api/pokemon/129
+Content-Type: application/json
+
+###
+
+GET http://localhost:8080/api/pokemon/152
+Content-Type: application/json
+
+###
+
+GET http://localhost:8080/api/pokemon/magikarp/icon
+Content-Type: application/json
+
+###
+
+GET http://localhost:8080/api/pokemon/random
+Content-Type: application/json
+
+###
+
+POST http://localhost:8080/api/pokemon/129/catch
+Content-Type: */*
+
+###
+
+POST http://localhost:8080/api/pokemon/69/catch
+Content-Type: */*
