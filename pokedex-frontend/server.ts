@@ -9,6 +9,7 @@ import bootstrap from './src/main.server';
 export function app(): express.Express {
   const server = express();
   const serverDistFolder = dirname(fileURLToPath(import.meta.url));
+  console.log('serverDistFolder', serverDistFolder, "/vercel/path0/pokedex-frontend/dist/pokedex-frontend")
   const browserDistFolder = resolve(serverDistFolder, '../browser');
   const indexHtml = join(serverDistFolder, 'index.server.html');
 
