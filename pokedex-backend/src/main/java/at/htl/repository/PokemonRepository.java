@@ -26,25 +26,21 @@ public class PokemonRepository {
         return pokemon;
     }
 
-    public boolean caughtPokemon(int id) {
-        if (id == 69) {
-            return true;
-        }
-
-        return getRandomPokemonId() == id;
-    }
-
     @Transactional
-    public boolean catchPokemon(int id) {
-        boolean caughtPokemon = caughtPokemon(id);
+    public int catchPokemon(int id) {
+        int result = -1;
 
-        if (caughtPokemon) {
-            Pokemon pokemon = getPokemon(id);
-            Pokemon p = this.em.merge(pokemon);
-            p.updateCatchCount(p.getCatchCount()+1);
+        Random randomNumberGenerator = new Random();
+        boolean isCatched = randomNumberGenerator.nextBoolean();
+        if(isCatched) {
+            Pokemon pokemon = this.getPokemon(id);
+            pokemon.setCatchCount(pokemon.getCatchCount() + 1);
+            this.em.persist(pokemon);
+
+            result = randomNumberGenerator.nextInt(pokemon.getLevelMin(), pokemon.getLevelMax()+1);
         }
 
-        return caughtPokemon;
+        return result;
     }
 
     public int getRandomPokemonId() {

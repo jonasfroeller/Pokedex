@@ -1,6 +1,7 @@
 package at.htl.model;
 
 import jakarta.persistence.*;
+import org.eclipse.microprofile.config.ConfigProvider;
 
 @Entity
 @Table(name = "POKEMON")
@@ -30,6 +31,10 @@ public class Pokemon {
     private PokemonType typeSecondary;
     @Column(name = "catch_count")
     private int catchCount;
+    @Column(name="level_min")
+    private int levelMin;
+    @Column(name="level_max")
+    private int levelMax;
 
     public Pokemon() {}
 
@@ -60,19 +65,7 @@ public class Pokemon {
     }
 
     public void setCatchCount(int catchCount) {
-        this.catchCount = catchCount;
-    }
-
-    private void setName(String name) {
-        this.name = name;
-    }
-
-    private void setTypePrimary(PokemonType typePrimary) {
-        this.typePrimary = typePrimary;
-    }
-
-    private void setTypeSecondary(PokemonType typeSecondary) {
-        this.typeSecondary = typeSecondary;
+        updateCatchCount (catchCount);
     }
 
     public void updateCatchCount(int amount) {
@@ -81,5 +74,18 @@ public class Pokemon {
         }
 
         this.setCatchCount(amount);
+    }
+
+    public int getLevelMin() {
+        return levelMin;
+    }
+
+    public int getLevelMax() {
+        return levelMax;
+    }
+
+    public String getPictureUrl() {
+        String pictureUrlTemplate = ConfigProvider.getConfig().getValue("pokemon.icon", String.class);
+        return String.format(pictureUrlTemplate, this.name.toLowerCase());
     }
 }

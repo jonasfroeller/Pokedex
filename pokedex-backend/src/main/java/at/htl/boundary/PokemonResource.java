@@ -23,12 +23,12 @@ public class PokemonResource {
     @Produces(MediaType.TEXT_PLAIN)
     @Path("/{id}/catch")
     public Response catchPokemon(@PathParam("id") int id) {
-        boolean result = repository.catchPokemon(id);
+        int levelCatched = repository.catchPokemon(id);
 
-        if (result) {
-            return Response.ok().build();
+        if (levelCatched == -1) {
+            return Response.noContent().build();
         } else {
-            return Response.status(Response.Status.NOT_MODIFIED).build();
+            return Response.ok(levelCatched).build();
         }
     }
 
