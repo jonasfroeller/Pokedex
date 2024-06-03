@@ -65,7 +65,7 @@ public class Pokemon {
     }
 
     public void setCatchCount(int catchCount) {
-        updateCatchCount (catchCount);
+        this.catchCount = catchCount;
     }
 
     public void updateCatchCount(int amount) {

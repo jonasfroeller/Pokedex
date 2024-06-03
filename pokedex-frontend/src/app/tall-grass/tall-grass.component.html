@@ -1,1 +1,16 @@
-<p>tall-grass works!</p>
+allows the user to catch Pokémon.
+
+@if (displayedPokemon) {
+  {{ displayedPokemon.name }}<br>
+
+  {{ displayedPokemon.levelMin }} - {{ displayedPokemon.levelMax }}<br>
+
+  {{ displayedPokemon.typePrimary }} {{ displayedPokemon.typeSecondary }}<br>
+
+  <img [alt]="displayedPokemon.name" [src]="displayedPokemon.pictureUrl"><br>
+}
+
+<hr>
+
+<button type="button" (click)="onCatch()">catch</button>
+<button type="button" (click)="onRunAway()">run</button>
