@@ -1,0 +1,12 @@
+#pokedex {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  gap: 1rem;
+}
+
+#pokedex {
+  .pokemonCaught {
+    border: 1px solid green;
+    border-radius: 1.5rem;
+  }
+}

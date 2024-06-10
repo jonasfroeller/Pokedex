@@ -1,13 +1,8 @@
-allows the user to catch Pokémon.
+<h1>Tall Grass</h1>
+<blockquote>Gotta Catch 'Em All!</blockquote>
 
 @if (displayedPokemon) {
-  {{ displayedPokemon.name }}<br>
-
-  {{ displayedPokemon.levelMin }} - {{ displayedPokemon.levelMax }}<br>
-
-  {{ displayedPokemon.typePrimary }} {{ displayedPokemon.typeSecondary }}<br>
-
-  <img [alt]="displayedPokemon.name" [src]="displayedPokemon.pictureUrl"><br>
+  <app-pokemon [pokemon]="displayedPokemon"></app-pokemon>
 }
 
 <hr>

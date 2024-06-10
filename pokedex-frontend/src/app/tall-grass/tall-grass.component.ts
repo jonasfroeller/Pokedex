@@ -2,19 +2,21 @@
 import {PokemonService} from "../pokemon.service";
 import {Pokemon} from "../types";
 import {NgOptimizedImage} from "@angular/common";
+ import {PokemonComponent} from "../pokemon/pokemon.component";
 
 @Component({
   selector: 'app-tall-grass',
   standalone: true,
   imports: [
-    NgOptimizedImage
+    NgOptimizedImage,
+    PokemonComponent
   ],
   templateUrl: './tall-grass.component.html',
   styleUrl: './tall-grass.component.scss'
 })
 export class TallGrassComponent implements AfterContentInit {
   displayedPokemon: Pokemon | null = null;
-  lastCaughtPokemonId: number = -1;
+  lastCaughtPokemonLvl: number = -1;
 
   constructor(private pokemonService: PokemonService) {
   }
@@ -41,10 +43,10 @@ export class TallGrassComponent implements AfterContentInit {
     console.log("manly move executed");
 
     if (this.displayedPokemon) {
-      this.pokemonService.catchPokemon(this.displayedPokemon.id).subscribe(pokemonId => {
-        if (pokemonId) {
-          this.lastCaughtPokemonId = pokemonId;
-          alert("pokemon caught!!! lvl: " + this.lastCaughtPokemonId);
+      this.pokemonService.catchPokemon(this.displayedPokemon.id).subscribe(pokemonLvl => {
+        if (pokemonLvl) {
+          this.lastCaughtPokemonLvl = pokemonLvl;
+          alert("pokemon caught!!! lvl: " + this.lastCaughtPokemonLvl);
         }
       });
 

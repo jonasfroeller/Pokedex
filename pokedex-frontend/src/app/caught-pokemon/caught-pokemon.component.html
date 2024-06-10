@@ -1,1 +1,9 @@
-shows up to 6 caught monsters.
+<h1>Caught Pokemon</h1>
+
+<i>you can catch up to 6 pokemon</i>
+
+@for (pokemon of displayedPokemon; track pokemon.id) {
+  <app-pokemon [pokemon]="pokemon"></app-pokemon>
+} @empty {
+  no pokemon caught yet...
+}

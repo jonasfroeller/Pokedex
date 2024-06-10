@@ -8,11 +8,19 @@ import {HttpClient} from "@angular/common/http";
 })
 export class PokemonService {
   private static readonly RANDOM_URL = "/api/pokemon/random";
+  private static readonly ALL_URL = "/api/pokemon/list";
   private static readonly CATCH_URL = (id: number) => {
     return `http://localhost:8080/api/pokemon/${id}/catch`;
   }
 
   constructor(private httpClient: HttpClient) { }
+
+  get allPokemon() {
+    return this.httpClient.get<Pokemon[]>(PokemonService.ALL_URL)
+      .pipe(tap(r => {
+        console.log(r)
+      }));
+  }
 
   get randomPokemon(): Observable<Pokemon> {
     return this.httpClient.get<Pokemon>(PokemonService.RANDOM_URL)

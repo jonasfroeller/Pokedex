@@ -1,1 +1,11 @@
-displays all Pokémon encountered.
+<h1>Pokedex</h1>
+
+<section id="pokedex">
+  @for (pokemon of displayedPokemon; track pokemon.id) {
+    <div [ngClass]="{'pokemonDiscovered': false, 'pokemonCaught': pokemon.catchCount >= 1}">
+      <app-pokemon [pokemon]="pokemon"></app-pokemon>
+    </div> <!--TODO: save, if pokemon was seen-->
+  } @empty {
+    loading pokemon...
+  }
+</section>
